@@ -1,0 +1,62 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>House's Voice Assistance</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>House's Voice Assistance</h1>
+    <div class="controls">
+      <div class="control">
+        <span class="label">Living room light</span>
+        <button class="btn blue" data-off="OFF">ON</button>
+      </div>
+      <div class="control">
+        <span class="label">T.V. Status</span>
+        <button class="btn blue" data-off="TURN OFF">TURN ON</button>
+      </div>
+      <div class="control">
+        <span class="label">Bathroom light</span>
+        <button class="btn blue" data-off="OFF">ON</button>
+      </div>
+      <div class="control">
+        <span class="label">Garage Status</span>
+        <button class="btn blue" data-off="DOWN">UP</button>
+      </div>
+      <div class="control">
+        <span class="label">Kitchen light</span>
+        <button class="btn blue" data-off="OFF">ON</button>
+      </div>
+      <div class="control">
+        <span class="label">Main Door</span>
+        <button class="btn blue" data-off="CLOSE">OPEN</button>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.controls .btn').forEach(btn => {
+        // guardamos el texto original
+        btn.dataset.on = btn.textContent;
+        btn.addEventListener('click', () => {
+          const isOn = btn.classList.contains('blue');
+          if (isOn) {
+            btn.classList.replace('blue', 'gray');
+            btn.textContent = btn.dataset.off;
+          } else {
+            btn.classList.replace('gray', 'blue');
+            btn.textContent = btn.dataset.on;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
